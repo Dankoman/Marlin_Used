@@ -887,6 +887,7 @@
  */
 #define ADVANCED_PAUSE_FEATURE
 #if ENABLED(ADVANCED_PAUSE_FEATURE)
+<<<<<<< HEAD
   #define PAUSE_PARK_RETRACT_FEEDRATE 60      // Initial retract feedrate in mm/s
   #define PAUSE_PARK_RETRACT_LENGTH 10         // Initial retract in mm
                                               // It is a short retract used immediately after print interrupt before move to filament exchange position
