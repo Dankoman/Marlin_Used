@@ -1283,11 +1283,11 @@
   /**
    * Enable the G26 Mesh Validation Pattern tool.
    */
-<<<<<<< HEAD
+/*<<<<<<< HEAD
   //#define G26_MESH_VALIDATION   // Enable G26 mesh validation
-=======
+=======*/
   //#define G26_MESH_VALIDATION
->>>>>>> bugfix-1.1.x
+//>>>>>>> bugfix-1.1.x
   #if ENABLED(G26_MESH_VALIDATION)
     #define MESH_TEST_NOZZLE_SIZE    0.4  // (mm) Diameter of primary nozzle.
     #define MESH_TEST_LAYER_HEIGHT   0.2  // (mm) Default layer height for the G26 Mesh Validation Tool.
@@ -1304,22 +1304,26 @@
   #define GRID_MAX_POINTS_X GRID_POINTS
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
-<<<<<<< HEAD
+/*<<<<<<< HEAD
   #define LEFT_PROBE_BED_POSITION -(DELTA_PROBEABLE_RADIUS)
   #define RIGHT_PROBE_BED_POSITION DELTA_PROBEABLE_RADIUS
   #define FRONT_PROBE_BED_POSITION -(DELTA_PROBEABLE_RADIUS)
   #define BACK_PROBE_BED_POSITION DELTA_PROBEABLE_RADIUS
 
-=======
->>>>>>> bugfix-1.1.x
+=======*/
+//>>>>>>> bugfix-1.1.x
   // The Z probe minimum outer margin (to validate G29 parameters).
   #define MIN_PROBE_EDGE 10
 
   // Set the boundaries for probing (where the probe can reach).
-  #define LEFT_PROBE_BED_POSITION 15
+  #define LEFT_PROBE_BED_POSITION -(DELTA_PROBEABLE_RADIUS)
+  #define RIGHT_PROBE_BED_POSITION DELTA_PROBEABLE_RADIUS
+  #define FRONT_PROBE_BED_POSITION -(DELTA_PROBEABLE_RADIUS)
+  #define BACK_PROBE_BED_POSITION DELTA_PROBEABLE_RADIUS
+  /*#define LEFT_PROBE_BED_POSITION 15
   #define RIGHT_PROBE_BED_POSITION (X_BED_SIZE - 15)
   #define FRONT_PROBE_BED_POSITION 15
-  #define BACK_PROBE_BED_POSITION (Y_BED_SIZE - 15)
+  #define BACK_PROBE_BED_POSITION (Y_BED_SIZE - 15)*/
 
   // Probe along the Y axis, advancing X after each column
   //#define PROBE_Y_FIRST
@@ -1811,13 +1815,13 @@
 // Note: Test audio output with the G-Code:
 //  M300 S<frequency Hz> P<duration ms>
 //
-<<<<<<< HEAD
+//<<<<<<< HEAD
 #define LCD_FEEDBACK_FREQUENCY_DURATION_MS 2
 #define LCD_FEEDBACK_FREQUENCY_HZ 5000
-=======
+//=======
 //#define LCD_FEEDBACK_FREQUENCY_DURATION_MS 2
 //#define LCD_FEEDBACK_FREQUENCY_HZ 5000
->>>>>>> bugfix-1.1.x
+//>>>>>>> bugfix-1.1.x
 
 //
 // CONTROLLER TYPE: Standard
