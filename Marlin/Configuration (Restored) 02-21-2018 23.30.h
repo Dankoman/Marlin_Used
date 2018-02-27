@@ -55,7 +55,7 @@
  * Uncomment UPGRADED for the upgraded models
  */
 #define LINEAR_PLUS
-#define UPGRADED
+//#define UPGRADED
 
 /* Heat Bed
  * Uncomment if you have a heat bed on your printer
@@ -68,7 +68,7 @@
  * I recommend to get them from autocalibration 
  * NEEDS EEPROM CLEAR!!
  */
-#define DELTA_HEIGHT 291.89
+#define DELTA_HEIGHT 292.43
 
 /* Steppers Direction
  * Uncomment if your stepper move backwards
@@ -112,7 +112,7 @@
  */
 #define ZPROBE_X_OFFSET        0
 #define ZPROBE_Y_OFFSET        0
-#define ZPROBE_Z_OFFSET        -60.66
+#define ZPROBE_Z_OFFSET        -48.64
 
 /* Bed Leveling Type
  * Type of bed leveling you want to use.
@@ -144,7 +144,7 @@
  * Start with a high value, and reduce according to your setup
  * NEEDS EEPROM CLEAR!!
  */
-#define BED_MARGIN 10
+#define BED_MARGIN 20
 
 /* Extruder Count
  * If your using 2 Extruders, uncomment this line
@@ -724,8 +724,7 @@
   #if ENABLED(LINEAR_PLUS) && DISABLED(UPGRADED)
     #define DELTA_DIAGONAL_ROD 271.5 // mm
   #elif ENABLED(LINEAR_PLUS) && ENABLED(UPGRADED)
-    //#define DELTA_DIAGONAL_ROD 268.0 // mm
-    #define DELTA_DIAGONAL_ROD 266.83 // mm
+    #define DELTA_DIAGONAL_ROD 268.0 // mm
   #else
     #define DELTA_DIAGONAL_ROD 218 // mm
   #endif
@@ -733,11 +732,11 @@
   // height from z=0 to home position
   //#define DELTA_HEIGHT 250.00 // get this value from auto calibrate
 
-  #define DELTA_ENDSTOP_ADJ { -0.68, 0.0, -1.81 } // get these from auto calibrate
+  #define DELTA_ENDSTOP_ADJ { -0.58, 0.0, -1.74 } // get these from auto calibrate
 
   // Horizontal distance bridged by diagonal push rods when effector is centered.
   #if ENABLED(LINEAR_PLUS)
-    #define DELTA_RADIUS 134.38 //mm  Get this value from auto calibrate
+    #define DELTA_RADIUS 133.99 //mm  Get this value from auto calibrate
   #else
     #define DELTA_RADIUS 101.31 //mm  Get this value from auto calibrate
   #endif
@@ -745,7 +744,7 @@
   // Trim adjustments for individual towers
   // tower angle corrections for X and Y tower / rotate XYZ so Z tower angle = 0
   // measured in degrees anticlockwise looking from above the printer
-  #define DELTA_TOWER_ANGLE_TRIM { -0.27, -0.42, 0.6 } // get these values from auto calibrate
+  #define DELTA_TOWER_ANGLE_TRIM { -0.22, -0.38, +0.60 } // get these values from auto calibrate
 
   // delta radius and diaginal rod adjustments measured in mm
   //#define DELTA_RADIUS_TRIM_TOWER { 0.0, 0.0, 0.0 }
@@ -1092,7 +1091,7 @@
 #define Z_CLEARANCE_BETWEEN_PROBES  5 // Z Clearance between probe points
 
 // For M851 give a range for adjusting the Z probe offset
-#define Z_PROBE_OFFSET_RANGE_MIN -70
+#define Z_PROBE_OFFSET_RANGE_MIN -20
 #define Z_PROBE_OFFSET_RANGE_MAX 20
 
 // Enable the M48 repeatability test to test probe accuracy
