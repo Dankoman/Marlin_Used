@@ -57,6 +57,7 @@
 #define LINEAR_PLUS
 #define UPGRADED
 
+
 /* Heat Bed
  * Uncomment if you have a heat bed on your printer
  */
@@ -68,7 +69,9 @@
  * I recommend to get them from autocalibration 
  * NEEDS EEPROM CLEAR!!
  */
+
 #define DELTA_HEIGHT 291.89
+
 
 /* Steppers Direction
  * Uncomment if your stepper move backwards
@@ -110,9 +113,11 @@
  * on the info screen of the printer.
  * NEEDS EEPROM CLEAR!!
  */
+
 #define ZPROBE_X_OFFSET        0
 #define ZPROBE_Y_OFFSET        0
 #define ZPROBE_Z_OFFSET        -60.66
+
 
 /* Bed Leveling Type
  * Type of bed leveling you want to use.
@@ -120,12 +125,12 @@
  * or not use one at all.
  */
 //#define AUTO_BED_LEVELING_LINEAR
+
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
 //#define AUTO_BED_LEVELING_BILINEAR
 #define AUTO_BED_LEVELING_UBL
 //#define MESH_BED_LEVELING
-
 //#define AUTO_BED_LEVELING_BILINEAR
 
 /* Autolevel / Autocalibration Grid Points
@@ -134,6 +139,7 @@
  * A higher the value means better results
  * Keep a low value for manual leveling
  */
+
 #define GRID_POINTS        7
 
 /* Bed Margin For Probing
@@ -144,7 +150,9 @@
  * Start with a high value, and reduce according to your setup
  * NEEDS EEPROM CLEAR!!
  */
+
 #define BED_MARGIN 10
+
 
 /* Extruder Count
  * If your using 2 Extruders, uncomment this line
@@ -724,8 +732,12 @@
   #if ENABLED(LINEAR_PLUS) && DISABLED(UPGRADED)
     #define DELTA_DIAGONAL_ROD 271.5 // mm
   #elif ENABLED(LINEAR_PLUS) && ENABLED(UPGRADED)
+<<<<<<< HEAD
     //#define DELTA_DIAGONAL_ROD 268.0 // mm
     #define DELTA_DIAGONAL_ROD 266.83 // mm
+=======
+    #define DELTA_DIAGONAL_ROD 268.0 // mm
+>>>>>>> 1.1.x
   #else
     #define DELTA_DIAGONAL_ROD 218 // mm
   #endif
@@ -733,11 +745,19 @@
   // height from z=0 to home position
   //#define DELTA_HEIGHT 250.00 // get this value from auto calibrate
 
+<<<<<<< HEAD
   #define DELTA_ENDSTOP_ADJ { -0.68, 0.0, -1.81 } // get these from auto calibrate
 
   // Horizontal distance bridged by diagonal push rods when effector is centered.
   #if ENABLED(LINEAR_PLUS)
     #define DELTA_RADIUS 134.38 //mm  Get this value from auto calibrate
+=======
+  #define DELTA_ENDSTOP_ADJ { 0.0, 0.0, 0.0 } // get these from auto calibrate
+
+  // Horizontal distance bridged by diagonal push rods when effector is centered.
+  #if ENABLED(LINEAR_PLUS)
+    #define DELTA_RADIUS 134.34 //mm  Get this value from auto calibrate
+>>>>>>> 1.1.x
   #else
     #define DELTA_RADIUS 101.31 //mm  Get this value from auto calibrate
   #endif
@@ -745,7 +765,11 @@
   // Trim adjustments for individual towers
   // tower angle corrections for X and Y tower / rotate XYZ so Z tower angle = 0
   // measured in degrees anticlockwise looking from above the printer
+<<<<<<< HEAD
   #define DELTA_TOWER_ANGLE_TRIM { -0.27, -0.42, 0.6 } // get these values from auto calibrate
+=======
+  #define DELTA_TOWER_ANGLE_TRIM { 0.0, 0.0, 0.0 } // get these values from auto calibrate
+>>>>>>> 1.1.x
 
   // delta radius and diaginal rod adjustments measured in mm
   //#define DELTA_RADIUS_TRIM_TOWER { 0.0, 0.0, 0.0 }
@@ -962,7 +986,11 @@
  */
 //#define BLTOUCH
 #if ENABLED(BLTOUCH)
+<<<<<<< HEAD
   #define BLTOUCH_DELAY 425   // (ms) Enable and increase if needed
+=======
+  #define BLTOUCH_DELAY 375   // (ms) Enable and increase if needed
+>>>>>>> 1.1.x
 #endif
 
 /**
@@ -1275,7 +1303,11 @@
   // Gradually reduce leveling correction until a set height is reached,
   // at which point movement will be level to the machine's XY plane.
   // The height can be set with M420 Z<height>
-  #define ENABLE_LEVELING_FADE_HEIGHT
+  //#define ENABLE_LEVELING_FADE_HEIGHT
+
+  // Set the boundaries for probing (where the probe can reach).
+  #define DELTA_PROBEABLE_RADIUS (DELTA_PRINTABLE_RADIUS - BED_MARGIN)
+
 
   // Set the boundaries for probing (where the probe can reach).
   #define DELTA_PROBEABLE_RADIUS (DELTA_PRINTABLE_RADIUS - BED_MARGIN)
@@ -1290,9 +1322,13 @@
   /**
    * Enable the G26 Mesh Validation Pattern tool.
    */
+<<<<<<< HEAD
 
   #define G26_MESH_VALIDATION
 
+=======
+  //#define G26_MESH_VALIDATION   // Enable G26 mesh validation
+>>>>>>> 1.1.x
   #if ENABLED(G26_MESH_VALIDATION)
     #define MESH_TEST_NOZZLE_SIZE    0.4  // (mm) Diameter of primary nozzle.
     #define MESH_TEST_LAYER_HEIGHT   0.2  // (mm) Default layer height for the G26 Mesh Validation Tool.
@@ -1309,6 +1345,13 @@
   #define GRID_MAX_POINTS_X GRID_POINTS
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
+<<<<<<< HEAD
+=======
+  #define LEFT_PROBE_BED_POSITION -(DELTA_PROBEABLE_RADIUS)
+  #define RIGHT_PROBE_BED_POSITION DELTA_PROBEABLE_RADIUS
+  #define FRONT_PROBE_BED_POSITION -(DELTA_PROBEABLE_RADIUS)
+  #define BACK_PROBE_BED_POSITION DELTA_PROBEABLE_RADIUS
+>>>>>>> 1.1.x
 
   // The Z probe minimum outer margin (to validate G29 parameters).
   #define MIN_PROBE_EDGE 10
@@ -1813,6 +1856,7 @@
 // Note: Test audio output with the G-Code:
 //  M300 S<frequency Hz> P<duration ms>
 //
+<<<<<<< HEAD
 //<<<<<<< HEAD
 #define LCD_FEEDBACK_FREQUENCY_DURATION_MS 2
 #define LCD_FEEDBACK_FREQUENCY_HZ 5000
@@ -1820,6 +1864,10 @@
 //#define LCD_FEEDBACK_FREQUENCY_DURATION_MS 2
 //#define LCD_FEEDBACK_FREQUENCY_HZ 5000
 //>>>>>>> bugfix-1.1.x
+=======
+#define LCD_FEEDBACK_FREQUENCY_DURATION_MS 2
+#define LCD_FEEDBACK_FREQUENCY_HZ 5000
+>>>>>>> 1.1.x
 
 //
 // CONTROLLER TYPE: Standard
