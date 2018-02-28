@@ -742,7 +742,7 @@
     #define DELTA_DIAGONAL_ROD 271.5 // mm
   #elif ENABLED(LINEAR_PLUS) && ENABLED(UPGRADED)
     //#define DELTA_DIAGONAL_ROD 268.0 // mm
-    #define DELTA_DIAGONAL_ROD 266.83 // mm
+    #define DELTA_DIAGONAL_ROD 264.97 // mm
   #else
     #define DELTA_DIAGONAL_ROD 218 // mm
   #endif
@@ -1291,7 +1291,7 @@
  * Normally G28 leaves leveling disabled on completion. Enable
  * this option to have G28 restore the prior leveling state.
  */
-//#define RESTORE_LEVELING_AFTER_G28
+#define RESTORE_LEVELING_AFTER_G28
 
 /**
  * Enable detailed logging of G28, G29, M48, etc.

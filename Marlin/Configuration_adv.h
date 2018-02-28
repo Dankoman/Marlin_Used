@@ -200,7 +200,7 @@
 //#define USE_CONTROLLER_FAN
 #if ENABLED(USE_CONTROLLER_FAN)
 
-  #define CONTROLLER_FAN_PIN -1        // Set a custom pin for the controller fan
+  #define CONTROLLER_FAN_PIN FAN_PIN        // Set a custom pin for the controller fan
 
   #define CONTROLLERFAN_SECS 60          // Duration in seconds for the fan to run after all motors are disabled
   #define CONTROLLERFAN_SPEED 255        // 255 == full speed
@@ -597,7 +597,7 @@
                                       // Note: Only affects SCROLL_LONG_FILENAMES with SDSORT_CACHE_NAMES but not SDSORT_DYNAMIC_RAM.
   #endif
 
-<<<<<<< HEAD
+
   // Show a progress bar on HD44780 LCDs for SD printing
   #if ENABLED(FULL_GRAPHIC_CONTROLLER)
     //#define LCD_PROGRESS_BAR
@@ -621,8 +621,7 @@
   // Add an 'M73' G-code to set the current percentage
   //#define LCD_SET_PROGRESS_MANUALLY
 
-=======
->>>>>>> bugfix-1.1.x
+
   // This allows hosts to request long names for files and folders with M33
   //#define LONG_FILENAME_HOST_SUPPORT
 
