@@ -1096,7 +1096,7 @@
  */
 
 #ifndef MIN_PROBE_EDGE
-  #define MIN_PROBE_EDGE 0
+  #define MIN_PROBE_EDGE 2
 #endif
 
 #if ENABLED(DELTA)
