@@ -29,6 +29,8 @@
 // Anycubic Probe version 1 or 2 see README.md; 0 for no probe
 #define ANYCUBIC_PROBE_VERSION 0
 
+#define BLTOUCH
+
 // Heated Bed:
 // 0 ... no heated bed
 // 1 ... aluminium heated bed with "BuildTak-like" sticker
@@ -557,7 +559,7 @@
   #define DELTA_CALIBRATION_MENU
 
   // uncomment to add G33 Delta Auto-Calibration (Enable EEPROM_SETTINGS to store results)
-  #if ANYCUBIC_PROBE_VERSION > 0
+  #if ENABLED(BLTOUCH) || ANYCUBIC_PROBE_VERSION > 0
     #define DELTA_AUTO_CALIBRATION
   #endif
 
@@ -598,14 +600,14 @@
   #endif
 
   // height from z=0 to home position
-  #define DELTA_HEIGHT 295.05 // get this value from auto calibrate
+  #define DELTA_HEIGHT 232.05 // get this value from auto calibrate
 
-  #define DELTA_ENDSTOP_ADJ { -0.80, 0.0, -0.89 } // get these from auto calibrate
+  #define DELTA_ENDSTOP_ADJ { -0.75, 0.0, -0.81 } // get these from auto calibrate
 
   // Trim adjustments for individual towers
   // tower angle corrections for X and Y tower / rotate XYZ so Z tower angle = 0
   // measured in degrees anticlockwise looking from above the printer
-  #define DELTA_TOWER_ANGLE_TRIM { -0.34, -0.32, 0.66 } // get these values from auto calibrate
+  #define DELTA_TOWER_ANGLE_TRIM { -0.38, -0.38, +0.76 } // get these values from auto calibrate
 
   // delta radius and diaginal rod adjustments measured in mm
   //#define DELTA_RADIUS_TRIM_TOWER { 0.0, 0.0, 0.0 }
@@ -624,9 +626,9 @@
 // extra connectors. Leave undefined any used for non-endstop and non-probe purposes.
 //#define USE_XMIN_PLUG
 //#define USE_YMIN_PLUG
-//#if ANYCUBIC_PROBE_VERSION > 0 ENABLED(
+#if ENABLED(BLTOUCH) || ANYCUBIC_PROBE_VERSION > 0
   #define USE_ZMIN_PLUG // a Z probe
-//#endif
+#endif
 #define USE_XMAX_PLUG
 #define USE_YMAX_PLUG
 #define USE_ZMAX_PLUG
@@ -647,7 +649,7 @@
 // Mechanical endstop with COM to ground and NC to Signal uses "false" here (most common setup).
 #define X_MIN_ENDSTOP_INVERTING false  // set to true to invert the logic of the endstop.
 #define Y_MIN_ENDSTOP_INVERTING false  // set to true to invert the logic of the endstop.
-#define Z_MIN_ENDSTOP_INVERTING false //(ANYCUBIC_PROBE_VERSION + 0 == 1) // V1 is NO, V2 is NC
+#define Z_MIN_ENDSTOP_INVERTING true //(ANYCUBIC_PROBE_VERSION + 0 == 1) // V1 is NO, V2 is NC
 #define X_MAX_ENDSTOP_INVERTING false  // set to true to invert the logic of the endstop.
 #define Y_MAX_ENDSTOP_INVERTING false  // set to true to invert the logic of the endstop.
 #define Z_MAX_ENDSTOP_INVERTING false  // set to true to invert the logic of the endstop.
@@ -698,7 +700,7 @@
  * (This feature is not required for common micro-switches mounted on PCBs
  * based on the Makerbot design, since they already include the 100nF capacitor.)
  */
-//#define ENDSTOP_NOISE_FILTER
+#define ENDSTOP_NOISE_FILTER
 
 //=============================================================================
 //============================== Movement Settings ============================
@@ -800,9 +802,9 @@
  *
  * Enable this option for a probe connected to the Z Min endstop pin.
  */
-//#if ANYCUBIC_PROBE_VERSION > 0
+#if ENABLED(BLTOUCH) || ANYCUBIC_PROBE_VERSION > 0
   #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
-//#endif
+#endif
 
 /**
  * Z_MIN_PROBE_ENDSTOP
@@ -838,16 +840,16 @@
  */
 #define BLTOUCH
 #if ENABLED(BLTOUCH)
-  #define BLTOUCH_DELAY 375   // (ms) Enable and increase if needed
+  #define BLTOUCH_DELAY 425   // (ms) Enable and increase if needed
 #endif
 /**
  * The "Manual Probe" provides a means to do "Auto" Bed Leveling without a probe.
  * Use G29 repeatedly, adjusting the Z height at each point with movement commands
  * or (with LCD_BED_LEVELING) the LCD controller.
  */
-#if ANYCUBIC_PROBE_VERSION == 0 && !ENABLED(BLTOUCH)
-  #define PROBE_MANUALLY
-  #define MANUAL_PROBE_START_Z 1.5
+#if ANYCUBIC_PROBE_VERSION == 0 || DISABLED(BLTOUCH)
+  //#define PROBE_MANUALLY
+  //#define MANUAL_PROBE_START_Z 1.5
 #endif
 
 /**
@@ -855,8 +857,8 @@
  *   (e.g., an inductive probe or a nozzle-based probe-switch.)
  */
 
-#if ANYCUBIC_PROBE_VERSION > 0 && !ENABLED(BLTOUCH)
-  #define FIX_MOUNTED_PROBE
+#if ANYCUBIC_PROBE_VERSION > 0 || ENABLED(BLTOUCH)
+  //#define FIX_MOUNTED_PROBE
 #endif
 
 /**
@@ -913,17 +915,17 @@
  */
 #define X_PROBE_OFFSET_FROM_EXTRUDER 0     // X offset: -left  +right  [of the nozzle]
 #define Y_PROBE_OFFSET_FROM_EXTRUDER 0     // Y offset: -front +behind [the nozzle]
-
-#if ANYCUBIC_PROBE_VERSION == 0
-  #define Z_PROBE_OFFSET_FROM_EXTRUDER 0     // Z offset: -below +above  [the nozzle]
-#elif ANYCUBIC_PROBE_VERSION == 1
-  #define Z_PROBE_OFFSET_FROM_EXTRUDER -19.0 // Z offset: -below +above  [the nozzle]
-#else
-  #define Z_PROBE_OFFSET_FROM_EXTRUDER -16.8 // Z offset: -below +above  [the nozzle]
-#endif
+#define Z_PROBE_OFFSET_FROM_EXTRUDER -62.96
+//#if ANYCUBIC_PROBE_VERSION == 0
+//  #define Z_PROBE_OFFSET_FROM_EXTRUDER 0     // Z offset: -below +above  [the nozzle]
+//#elif ANYCUBIC_PROBE_VERSION == 1
+//  #define Z_PROBE_OFFSET_FROM_EXTRUDER -19.0 // Z offset: -below +above  [the nozzle]
+//#else
+//  #define Z_PROBE_OFFSET_FROM_EXTRUDER -16.8 // Z offset: -below +above  [the nozzle]
+//#endif
 
 // Certain types of probes need to stay away from edges
-#define MIN_PROBE_EDGE 20
+#define MIN_PROBE_EDGE 10
 
 // X and Y axis travel speed (mm/m) between probes
 #define XY_PROBE_SPEED 6000
@@ -1000,19 +1002,19 @@
  * Example: `M851 Z-5` with a CLEARANCE of 4  =>  9mm from bed to nozzle.
  *     But: `M851 Z+1` with a CLEARANCE of 2  =>  2mm from bed to nozzle.
  */
-#define Z_CLEARANCE_DEPLOY_PROBE   10 // Z Clearance for Deploy/Stow
-#define Z_CLEARANCE_BETWEEN_PROBES 25 // Z Clearance between probe points
-#define Z_CLEARANCE_MULTI_PROBE    25 // Z Clearance between multiple probes
-#define Z_AFTER_PROBING            30 // Z position after probing is done
+#define Z_CLEARANCE_DEPLOY_PROBE   50 // Z Clearance for Deploy/Stow
+#define Z_CLEARANCE_BETWEEN_PROBES 5 // Z Clearance between probe points
+#define Z_CLEARANCE_MULTI_PROBE    5 // Z Clearance between multiple probes
+#define Z_AFTER_PROBING            50 // Z position after probing is done
 
 #define Z_PROBE_LOW_POINT          -2 // Farthest distance below the trigger-point to go before stopping
 
 // For M851 give a range for adjusting the Z probe offset
-#define Z_PROBE_OFFSET_RANGE_MIN -40
+#define Z_PROBE_OFFSET_RANGE_MIN -80
 #define Z_PROBE_OFFSET_RANGE_MAX 20
 
 // Enable the M48 repeatability test to test probe accuracy
-#if ANYCUBIC_PROBE_VERSION > 0
+#if ENABLED(BLTOUCH) || ANYCUBIC_PROBE_VERSION > 0
   #define Z_MIN_PROBE_REPEATABILITY_TEST
 #endif
 
@@ -1164,14 +1166,13 @@
  *   leveling in steps so you can manually adjust the Z height at each grid-point.
  *   With an LCD controller the process is guided step-by-step.
  */
-#if ANYCUBIC_PROBE_VERSION == 0
-  #define AUTO_BED_LEVELING_3POINT
-#else
+
+//#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
-  #define AUTO_BED_LEVELING_BILINEAR
-//#define AUTO_BED_LEVELING_UBL
+//#define AUTO_BED_LEVELING_BILINEAR
+#define AUTO_BED_LEVELING_UBL
 //#define MESH_BED_LEVELING
-#endif
+
 /**
  * Normally G28 leaves leveling disabled on completion. Enable
  * this option to have G28 restore the prior leveling state.
